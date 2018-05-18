@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="687.0" prefWidth="1039.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="matlib.head.main.MainController">
+
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab text="Books">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="booksTableView" prefHeight="616.0" prefWidth="1039.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <columns>
+                                    <TableColumn fx:id="titleCol" prefWidth="75.0" text="Book Title" />
+                                    <TableColumn fx:id="idCol" prefWidth="75.0" text="Book ID" />
+                                    <TableColumn fx:id="authorCol" prefWidth="75.0" text="Book Author" />
+                                    <TableColumn fx:id="categoryCol" prefWidth="75.0" text="Book Category" />
+                                    <TableColumn fx:id="availabilityCol" prefWidth="75.0" text="Availability" />
+                                 </columns>
+                             
+                                 <contextMenu>
+                                    <ContextMenu>
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#refresh" text="Refresh" />
+                                       </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Users">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="usersTableView" prefHeight="616.0" prefWidth="1039.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <columns>
+                                    <TableColumn fx:id="usernameCol" prefWidth="173.0" text="Username" />
+                                    <TableColumn fx:id="nameCol" prefWidth="202.0" text="Name" />
+                                    <TableColumn fx:id="LastName" minWidth="0.0" prefWidth="212.0" text="LastName" />
+                                    <TableColumn fx:id="passwordCol" prefWidth="249.0" text="password" />
+                                 </columns>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#reloadUsersTable" text="Reload" />
+                                          <MenuItem mnemonicParsing="false" onAction="#deleteMember" text="Delete member" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Issued Books">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="issuedTableView" prefHeight="616.0" prefWidth="839.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                  <TableColumn fx:id="bookidCol" prefWidth="157.0" text="Book ID" />
+                                  <TableColumn fx:id="borrowedCol" prefWidth="260.0" text="Borrowed by" />
+                                    <TableColumn fx:id="dateCol" prefWidth="189.0" text="Date" />
+                                    <TableColumn fx:id="statusCol" prefWidth="230.0" text="Status" />
+                                </columns>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#reloadIssuedTable" text="Reload" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Librarian Activity">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="activityTableView" prefHeight="616.0" prefWidth="839.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                  <TableColumn fx:id="acname" prefWidth="260.0" text="Librarian name" />
+                                    <TableColumn fx:id="activity" prefWidth="189.0" text="Their action" />
+                                    <TableColumn fx:id="acdate" prefWidth="230.0" text="date" />
+                                </columns>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#reloadIssuedTable" text="Reload" />
+                                          <MenuItem mnemonicParsing="false" onAction="#deleteActivity" text="Delete record" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Type a report">
+                     <content>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                           <center>
+                              <TextArea fx:id="reportInput" prefHeight="200.0" prefWidth="200.0" promptText="Type your report here" BorderPane.alignment="CENTER" />
+                           </center>
+                           <bottom>
+                              <Button mnemonicParsing="false" onAction="#generateReport" prefHeight="137.0" prefWidth="878.0" text="Submit " BorderPane.alignment="CENTER" />
+                           </bottom>
+                        </BorderPane>
+                     </content></Tab>
+              </tabs>
+            </TabPane>
+         </center>
+         <left>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <top>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Head Librarian" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets top="10.0" />
+                     </BorderPane.margin>
+                  </Text>
+               </top>
+               <center>
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#loadCategories" prefHeight="102.0" prefWidth="200.0" text="List of Categories" />
+                     </children></VBox>
+               </center>
+               <bottom>
+                  <AnchorPane prefHeight="101.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#logout" prefHeight="101.0" prefWidth="200.0" text="Log out" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </bottom>
+            </BorderPane>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>

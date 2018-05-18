@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="1039.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="matlib.ui.main.MainController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab text="Books">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="booksTableView" prefHeight="616.0" prefWidth="1039.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <columns>
+                                    <TableColumn fx:id="titleCol" prefWidth="75.0" text="Book Title" />
+                                    <TableColumn fx:id="idCol" prefWidth="75.0" text="Book ID" />
+                                    <TableColumn fx:id="authorCol" prefWidth="75.0" text="Book Author" />
+                                    <TableColumn fx:id="categoryCol" prefWidth="75.0" text="Book Category" />
+                                    <TableColumn fx:id="availabilityCol" prefWidth="75.0" text="Availability" />
+                                 </columns>
+                             
+                                 <contextMenu>
+                                    <ContextMenu>
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#deleteBook" text="Delete" />
+                                          <MenuItem mnemonicParsing="false" onAction="#editBook" text="Edit" />
+                                          <MenuItem mnemonicParsing="false" onAction="#refresh" text="Refresh" />
+                                       </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Users">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="usersTableView" prefHeight="616.0" prefWidth="1039.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <columns>
+                                    <TableColumn fx:id="usernameCol" prefWidth="173.0" text="Username" />
+                                    <TableColumn fx:id="nameCol" prefWidth="202.0" text="Name" />
+                                    <TableColumn fx:id="LastName" minWidth="0.0" prefWidth="212.0" text="LastName" />
+                                    <TableColumn fx:id="passwordCol" prefWidth="249.0" text="password" />
+                                 </columns>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#reloadUsersTable" text="Reload" />
+                                          <MenuItem mnemonicParsing="false" onAction="#removeMember" text="Delete Member" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Issued Books">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="issuedTableView" prefHeight="616.0" prefWidth="839.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                  <TableColumn fx:id="bookidCol" prefWidth="157.0" text="Book ID" />
+                                  <TableColumn fx:id="borrowedCol" prefWidth="260.0" text="Borrowed by" />
+                                    <TableColumn fx:id="dateCol" prefWidth="189.0" text="Date" />
+                                    <TableColumn fx:id="statusCol" prefWidth="230.0" text="Status" />
+                                </columns>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#changeIssueStatus" text="change Status" />
+                                          <MenuItem mnemonicParsing="false" onAction="#reloadIssuedTable" text="Reload" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="655.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#loadAddBook" prefHeight="112.0" prefWidth="200.0" text="Add Book" />
+                        <Button mnemonicParsing="false" onAction="#loadAddMember" prefHeight="112.0" prefWidth="200.0" text="Add Member" />
+                        <Button mnemonicParsing="false" onAction="#loadAddCategory" prefHeight="112.0" prefWidth="200.0" text="Add Category" />
+                        <Button mnemonicParsing="false" onAction="#loadIssuebook" prefHeight="112.0" prefWidth="200.0" text="Issue " />
+                        <Button mnemonicParsing="false" onAction="#loadCategories" prefHeight="112.0" prefWidth="200.0" text="List Of Categories" />
+                        <Button mnemonicParsing="false" onAction="#logout" prefHeight="112.0" prefWidth="200.0" text="Log Out" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </left>
+      </BorderPane>
+   </children>
+</StackPane>
